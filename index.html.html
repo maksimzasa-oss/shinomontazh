@@ -1,0 +1,413 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Шиномонтаж на Бирюзовой</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: одна колонка, шапка с адресом, герой с маркировкой шины как главной деталью, затем услуги, цены по радиусу, контакты */
+:root {
+  --bg: #f2f6f5;
+  --surface: #ffffff;
+  --fg: #11201f;
+  --muted: #55696a;
+  --line: #d3e0de;
+  --accent: #0b8f8a;
+  --accent-ink: #ffffff;
+  --rubber: #16201f;
+  --rubber-fg: #e9f3f2;
+  --display: "Unbounded", "Arial Black", sans-serif;
+  --body: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1717; --surface: #162221; --fg: #e6f1f0; --muted: #94aaa9; --line: #263a39;
+    --accent: #36c2bb; --accent-ink: #062321; --rubber: #0a1110; --rubber-fg: #e6f1f0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1717; --surface: #162221; --fg: #e6f1f0; --muted: #94aaa9; --line: #263a39;
+  --accent: #36c2bb; --accent-ink: #062321; --rubber: #0a1110; --rubber-fg: #e6f1f0;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 17px; line-height: 1.55;
+}
+.wrap {
+  max-width: 1040px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+h1, h2 { font-family: var(--display); font-weight: 700; line-height: 1.1; text-wrap: balance; margin: 0; }
+.mono { font-family: var(--mono); }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 18px; }
+.brand { font-family: var(--display); font-weight: 500; font-size: 15px; display: flex; align-items: center; gap: 10px; }
+.brand svg { flex: none; }
+.top-addr { color: var(--muted); font-size: 15px; }
+
+.hero { padding-block: 28px 56px; }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; }
+.hero h1 { font-size: clamp(30px, 5.4vw, 54px); }
+.hero h1 span { color: var(--accent); }
+.lead { max-width: 52ch; color: var(--muted); font-size: 18px; margin: 20px 0 28px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  padding: 14px 22px; border-radius: 10px; font-weight: 600; font-size: 16px;
+  border: 2px solid var(--accent); background: var(--accent); color: var(--accent-ink);
+}
+.btn.ghost { background: transparent; color: var(--fg); border-color: var(--line); }
+.btn:hover { filter: brightness(1.06); }
+.btn.ghost:hover { border-color: var(--accent); }
+.rating { display: flex; align-items: center; gap: 10px; margin-top: 26px; color: var(--muted); font-size: 15px; }
+.stars { color: var(--accent); letter-spacing: 2px; font-size: 18px; }
+
+.tire { background: var(--rubber); color: var(--rubber-fg); border-radius: 22px; padding: 28px; min-width: 0; }
+.tire .size { font-family: var(--mono); font-weight: 500; font-size: clamp(30px, 6vw, 52px); letter-spacing: .02em; line-height: 1; margin: 14px 0 22px; }
+.tire .size b { color: var(--accent); font-weight: 500; }
+.tire dl { margin: 0; display: grid; gap: 10px; }
+.tire dl div { display: grid; grid-template-columns: 74px 1fr; gap: 12px; align-items: baseline; border-top: 1px solid rgba(233,243,242,.16); padding-top: 10px; }
+.tire dt { font-family: var(--mono); color: var(--accent); font-size: 15px; }
+.tire dd { margin: 0; font-size: 15px; color: rgba(233,243,242,.82); }
+.tire .label { color: rgba(233,243,242,.6); }
+
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+section h2 { font-size: clamp(24px, 3.6vw, 34px); margin-bottom: 8px; }
+.sub { color: var(--muted); margin: 0 0 28px; max-width: 56ch; }
+
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.service { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; min-width: 0; }
+.service h3 { margin: 0 0 6px; font-size: 18px; }
+.service p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.price-box { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; }
+th, td { text-align: left; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+td.r { font-family: var(--mono); font-weight: 500; }
+td.p { font-variant-numeric: tabular-nums; font-weight: 600; }
+.note { color: var(--muted); font-size: 14px; margin-top: 14px; }
+
+.booking { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; align-items: start; }
+.step-title { font-weight: 600; margin: 0 0 12px; font-size: 16px; }
+.days { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 18px; }
+.day, .slot {
+  font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line);
+  border-radius: 10px; cursor: pointer;
+}
+.day { flex: none; min-width: 74px; padding: 10px 12px; text-align: center; line-height: 1.25; }
+.day small { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.day strong { font-size: 18px; }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 8px; }
+.slot { padding: 10px 0; font-family: var(--mono); font-size: 15px; font-weight: 500; }
+.day:hover, .slot:hover:not(:disabled) { border-color: var(--accent); }
+.day[aria-pressed="true"], .slot[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.day[aria-pressed="true"] small { color: var(--accent-ink); }
+.slot:disabled { opacity: .4; cursor: not-allowed; text-decoration: line-through; }
+.field { display: grid; gap: 6px; margin-bottom: 14px; }
+.field label { font-size: 14px; color: var(--muted); }
+.field input, .field select, .field textarea {
+  font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line);
+  border-radius: 10px; padding: 11px 12px; width: 100%; min-width: 0;
+}
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.chosen { font-family: var(--mono); font-size: 15px; color: var(--accent); margin: 0 0 16px; min-height: 1.5em; }
+.result { margin-top: 18px; padding: 16px; border-radius: 12px; border: 1px dashed var(--accent); background: var(--bg); }
+.result pre { margin: 0 0 12px; white-space: pre-wrap; font-family: var(--mono); font-size: 14px; }
+.err { color: #c0392b; font-size: 14px; margin: 0 0 10px; min-height: 1.2em; }
+:root[data-theme="dark"] .err { color: #ff8a7a; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .err { color: #ff8a7a; } }
+.hours { font-family: var(--mono); color: var(--fg); font-size: 16px; margin: 10px 0 6px; }
+.contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; min-width: 0; }
+.card h3 { margin: 6px 0 8px; font-size: 20px; }
+.card p { margin: 0 0 6px; color: var(--muted); }
+.card .strong { color: var(--fg); font-weight: 500; }
+.phone { font-family: var(--mono); font-size: 22px; color: var(--fg); user-select: all; }
+.copy { margin-top: 12px; font: inherit; font-size: 14px; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+.copy:hover { border-color: var(--accent); }
+
+footer { border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 24px; color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+@media (max-width: 820px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 32px; }
+  .services { grid-template-columns: 1fr; }
+  .contacts { grid-template-columns: 1fr; }
+  .booking { grid-template-columns: 1fr; }
+  section { padding-block: 40px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: filter .15s, border-color .15s; }
+}
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="4"/>
+        <circle cx="16" cy="16" r="5" fill="var(--accent)"/>
+      </svg>
+      Шиномонтажная мастерская
+    </div>
+    <div class="top-addr">Казань, Бирюзовая улица, 38 к1 · ежедневно 8:00–19:00</div>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="label">Кировский район · Казань</div>
+        <h1 style="margin-top:14px">Переобуем машину <span>быстро и без сюрпризов</span></h1>
+        <p class="lead">Снимем, поставим и отбалансируем колёса. Проверим давление, поможем с ремонтом проколов и хранением резины. Мастерская на первом этаже по адресу Бирюзовая, 38 к1.</p>
+        <div class="actions">
+          <a class="btn" href="#booking">Записаться онлайн</a>
+          <a class="btn ghost" href="https://2gis.ru/kazan/firm/2956016536814719" target="_blank" rel="noopener">Маршрут в 2ГИС</a>
+        </div>
+        <div class="rating">
+          <span class="stars" aria-hidden="true">★★★★☆</span>
+          <span><strong>4,1</strong> по 20 оценкам в 2ГИС</span>
+        </div>
+      </div>
+
+      <aside class="tire" aria-label="Как читать маркировку шины">
+        <div class="label">Маркировка на боковине шины</div>
+        <div class="size" aria-label="205 на 55, радиус 16"><b>205</b>/55 R<b>16</b></div>
+        <dl>
+          <div><dt>205</dt><dd>ширина протектора в миллиметрах</dd></div>
+          <div><dt>55</dt><dd>высота профиля в процентах от ширины</dd></div>
+          <div><dt>R16</dt><dd>посадочный диаметр диска в дюймах</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <h2>Что делаем</h2>
+      <p class="sub">Основные работы для легковых авто. Сложные случаи оценим на месте.</p>
+      <div class="services">
+        <div class="service"><h3>Сезонная замена</h3><p>Снятие, установка и затяжка колёс при смене зимней и летней резины.</p></div>
+        <div class="service"><h3>Балансировка</h3><p>Устраняем биение руля и неравномерный износ протектора.</p></div>
+        <div class="service"><h3>Ремонт проколов</h3><p>Заклеим боковые и сквозные проколы, где это безопасно.</p></div>
+        <div class="service"><h3>Монтаж на диски</h3><p>Снимаем шину с диска и надеваем новую, в том числе низкопрофильную.</p></div>
+        <div class="service"><h3>Подкачка и проверка</h3><p>Выставим давление по таблице производителя и осмотрим колёса.</p></div>
+        <div class="service"><h3>Хранение шин</h3><p>Сезонное хранение комплекта из четырёх колёс от 1 500 ₽ за сезон.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prices">
+    <div class="wrap">
+      <h2>Цены по радиусу</h2>
+      <p class="sub">Комплект из четырёх колёс: снятие, установка и балансировка. Радиус указан на боковине шины после буквы R.</p>
+      <div class="price-box">
+        <table>
+          <thead><tr><th>Радиус</th><th>Типичные авто</th><th>Комплект</th></tr></thead>
+          <tbody>
+            <tr><td class="r">R13–R14</td><td>малые седаны, хэтчбеки</td><td class="p">от 1 600 ₽</td></tr>
+            <tr><td class="r">R15–R16</td><td>седаны, универсалы</td><td class="p">от 2 000 ₽</td></tr>
+            <tr><td class="r">R17–R18</td><td>кроссоверы, бизнес-класс</td><td class="p">от 2 600 ₽</td></tr>
+            <tr><td class="r">R19–R20</td><td>внедорожники</td><td class="p">от 3 200 ₽</td></tr>
+            <tr><td class="r">R21–R22</td><td>большие внедорожники</td><td class="p">от 4 000 ₽</td></tr>
+          </tbody>
+          <tbody>
+            <tr><th colspan="3">Дополнительно</th></tr>
+            <tr><td class="r">Хранение</td><td>комплект из 4 колёс, за сезон</td><td class="p">от 1 500 ₽</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Цены ориентировочные. Точную стоимость назовём по телефону, когда узнаем размер шин и состояние дисков.</p>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="wrap">
+      <h2>Запись на шиномонтаж</h2>
+      <p class="sub">Выберите день и время, оставьте данные. Заявку подтвердим по телефону, обычно в течение рабочего дня.</p>
+      <form class="booking" id="form" novalidate>
+        <div class="card">
+          <p class="step-title">1. День и время</p>
+          <div class="days" id="days" role="group" aria-label="День"></div>
+          <div class="slots" id="slots" role="group" aria-label="Время"></div>
+        </div>
+        <div class="card">
+          <p class="step-title">2. Ваши данные</p>
+          <p class="chosen" id="chosen">Время не выбрано</p>
+          <div class="field"><label for="name">Имя</label><input id="name" type="text" autocomplete="name" placeholder="Как к вам обращаться"></div>
+          <div class="field"><label for="tel">Телефон</label><input id="tel" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00"></div>
+          <div class="two">
+            <div class="field"><label for="service">Услуга</label>
+              <select id="service">
+                <option>Сезонная замена колёс</option>
+                <option>Балансировка</option>
+                <option>Ремонт прокола</option>
+                <option>Монтаж шин на диски</option>
+                <option>Сдать шины на хранение</option>
+              </select></div>
+            <div class="field"><label for="radius">Радиус</label>
+              <select id="radius">
+                <option>R13</option><option>R14</option><option selected>R15</option><option>R16</option>
+                <option>R17</option><option>R18</option><option>R19</option><option>R20</option><option>R21</option><option>R22</option>
+              </select></div>
+          </div>
+          <div class="field"><label for="comment">Комментарий</label><textarea id="comment" rows="2" placeholder="Марка авто, размер шин, пожелания"></textarea></div>
+          <p class="err" id="err" role="alert"></p>
+          <button class="btn" type="submit" style="cursor:pointer;font-family:inherit">Составить заявку</button>
+          <div class="result" id="result" hidden>
+            <div class="label" style="margin-bottom:8px">Ваша заявка</div>
+            <pre id="summary"></pre>
+            <button class="copy" id="copyReq" type="button" style="margin-top:0">Скопировать заявку</button>
+            <p class="note" style="margin-bottom:0">Сайт сам ничего не отправляет. Скопируйте заявку и пришлите её на номер мастерской или назовите по телефону, и мы закрепим за вами время.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <h2>Как нас найти</h2>
+      <p class="sub">Заезжайте или звоните, чтобы уточнить время.</p>
+      <div class="contacts">
+        <div class="card">
+          <div class="label">Адрес</div>
+          <h3>Бирюзовая улица, 38 к1</h3>
+          <p>Кировский район, Казань, 420078</p>
+          <p class="strong">1 этаж</p>
+          <div class="label" style="margin-top:16px">Часы работы</div>
+          <p class="hours">Ежедневно с 8:00 до 19:00</p>
+          <div class="actions" style="margin-top:16px">
+            <a class="btn ghost" href="https://2gis.ru/kazan/firm/2956016536814719" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="label">Телефон</div>
+          <h3 class="phone" id="phone">+7 905 375-XX-XX</h3>
+          <p>Звоните, чтобы записаться и узнать цену на ваш размер.</p>
+          <button class="copy" id="copy" type="button">Скопировать номер</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Шиномонтажная мастерская, Казань</span>
+    <span>Бирюзовая улица, 38 к1</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    // Часы работы мастерской: поменяйте здесь, и сетка времени пересчитается
+    var OPEN = 8, LAST_START = 18, STEP = 30; // последняя запись на 18:00
+    var WD = ['вс','пн','вт','ср','чт','пт','сб'];
+    var MN = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+    var daysEl = document.getElementById('days'), slotsEl = document.getElementById('slots');
+    var chosen = document.getElementById('chosen');
+    var sel = { day: null, time: null };
+    var now = new Date();
+    var list = [];
+    for (var i = 0; i < 7; i++) { var d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i); list.push(d); }
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function dayLabel(d) { return WD[d.getDay()] + ', ' + d.getDate() + ' ' + MN[d.getMonth()]; }
+    function renderDays() {
+      daysEl.innerHTML = '';
+      list.forEach(function (d, idx) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'day';
+        b.setAttribute('aria-pressed', sel.day === idx ? 'true' : 'false');
+        var s = document.createElement('small'); s.textContent = idx === 0 ? 'сегодня' : WD[d.getDay()];
+        var n = document.createElement('strong'); n.textContent = d.getDate();
+        b.appendChild(s); b.appendChild(n);
+        b.addEventListener('click', function () { sel.day = idx; sel.time = null; renderDays(); renderSlots(); updateChosen(); });
+        daysEl.appendChild(b);
+      });
+    }
+    function renderSlots() {
+      slotsEl.innerHTML = '';
+      if (sel.day === null) { var p = document.createElement('p'); p.className = 'note'; p.textContent = 'Сначала выберите день.'; slotsEl.appendChild(p); return; }
+      var d = list[sel.day];
+      for (var m = OPEN * 60; m <= LAST_START * 60; m += STEP) {
+        var t = pad(Math.floor(m / 60)) + ':' + pad(m % 60);
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'slot'; b.textContent = t;
+        var past = sel.day === 0 && (now.getHours() * 60 + now.getMinutes() + 20) > m;
+        b.disabled = past;
+        b.setAttribute('aria-pressed', sel.time === t ? 'true' : 'false');
+        (function (tt) { b.addEventListener('click', function () { sel.time = tt; renderSlots(); updateChosen(); }); })(t);
+        slotsEl.appendChild(b);
+      }
+    }
+    function updateChosen() {
+      chosen.textContent = (sel.day !== null && sel.time) ? dayLabel(list[sel.day]) + ', ' + sel.time : 'Время не выбрано';
+    }
+    sel.day = 0; renderDays(); renderSlots();
+    // сегодняшний день уже закончился: переключаем на завтра
+    if (now.getHours() * 60 + now.getMinutes() + 20 > LAST_START * 60) { sel.day = 1; renderDays(); renderSlots(); }
+
+    var form = document.getElementById('form'), err = document.getElementById('err');
+    var result = document.getElementById('result'), summary = document.getElementById('summary');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('name').value.trim();
+      var tel = document.getElementById('tel').value.trim();
+      if (sel.day === null || !sel.time) { err.textContent = 'Выберите день и время.'; return; }
+      if (!name) { err.textContent = 'Укажите имя.'; return; }
+      if (tel.replace(/\D/g, '').length < 10) { err.textContent = 'Укажите телефон полностью, например +7 900 000-00-00.'; return; }
+      err.textContent = '';
+      var lines = [
+        'Заявка на шиномонтаж',
+        'Когда: ' + dayLabel(list[sel.day]) + ', ' + sel.time,
+        'Услуга: ' + document.getElementById('service').value,
+        'Радиус: ' + document.getElementById('radius').value,
+        'Имя: ' + name,
+        'Телефон: ' + tel
+      ];
+      var c = document.getElementById('comment').value.trim();
+      if (c) lines.push('Комментарий: ' + c);
+      summary.textContent = lines.join('\n');
+      result.hidden = false;
+      result.scrollIntoView({ block: 'nearest' });
+    });
+    var cr = document.getElementById('copyReq');
+    cr.addEventListener('click', function () {
+      function done() { cr.textContent = 'Заявка скопирована'; setTimeout(function () { cr.textContent = 'Скопировать заявку'; }, 2000); }
+      function fb() {
+        var r = document.createRange(); r.selectNodeContents(summary);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        cr.textContent = 'Текст выделен, скопируйте его';
+      }
+      try { navigator.clipboard.writeText(summary.textContent).then(done, fb); } catch (e) { fb(); }
+    });
+  })();
+  (function () {
+    var btn = document.getElementById('copy');
+    var phone = document.getElementById('phone');
+    btn.addEventListener('click', function () {
+      var text = phone.textContent.trim();
+      function done() { btn.textContent = 'Номер скопирован'; setTimeout(function () { btn.textContent = 'Скопировать номер'; }, 2000); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(phone);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Номер выделен';
+      }
+      try {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } catch (e) { fallback(); }
+    });
+  })();
+</script>
+
+</body></html>
